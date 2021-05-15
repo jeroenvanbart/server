@@ -3,19 +3,20 @@ const Schema   = mongoose.Schema;
 
 const petSchema = new Schema({
     name: String,
-    profileImg: String,
+    imageUrl: String,
     bio: String,
     notes: String,
-  usertype: {
-    type: String, 
-    enum: ["Dog", "Cat", "Rodent", "Fish", "Bird"], 
-    default:""
-    },
+    owner: {type:Schema.Types.ObjectId, ref: "User"},
+  // pettype: {
+  //   type: String,
+  //   enum: ["Dog", "Cat", "Rodent", "Fish", "Bird"], 
+  //   default:""
+  //   },
 
 }, 
 {
   timestamps: true
 });
 
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+const Pet = mongoose.model('Pet', petSchema);
+module.exports = Pet;

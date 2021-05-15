@@ -12,6 +12,7 @@ const userSchema = new Schema(
         "https://res.cloudinary.com/defncxxxy/image/upload/v1620846241/Pawtell/file_yot0h7.jpg",
     },
     reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
+    pets: [{type:Schema.Types.ObjectId, ref: "Pet"}],
     usertype: {
       type: String,
       enum: ["Pet Owner", "Pet Sitter"],

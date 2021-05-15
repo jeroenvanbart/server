@@ -56,6 +56,7 @@ app.use("/", require("./routes/index"));
 app.use("/api", require("./routes/auth.routes"));
 app.use("/api", require("./routes/upload.routes"));
 app.use("/api", require("./routes/user.routes"));
+app.use("/api", require("./routes/pet.routes"));
 
 
 module.exports = app;
