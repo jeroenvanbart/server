@@ -37,6 +37,19 @@ router.get("/pet", (req, res, next) => {
     });
 });
 
+router.get("/:id/ownpets", (req, res, next) => {
+    const {id} = req.params;
+    Pet.find({owner: id})
+      .then((ownpets) => {
+        res.status(200).json(ownpets);
+      })
+      .catch((err) => {
+        res.status(500).json(err);
+        next(err);
+      });
+  });
+  
+
 // GET route => to get a specific project/detailed view
 // router.get("/pet/:id", (req, res, next) => {
 //   const { id } = req.params;
