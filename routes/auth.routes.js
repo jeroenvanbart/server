@@ -11,7 +11,7 @@ const SALT_ROUNDS = 10;
 const User = require("../models/user-model");
 
 authRoutes.post("/signup", (req, res, next) => {
-    const { username, email, password, usertype} = req.body;
+    const { username, email, password, profileImg} = req.body;
   
     if (!username || !password || !email ) {
       res.status(400).json({ message: "Fill out all fields" });
@@ -36,7 +36,7 @@ authRoutes.post("/signup", (req, res, next) => {
           username,
           email,
           password: hashedPassword,
-          usertype,
+          profileImg,
         });
       })
       .then((userFromDB) => {

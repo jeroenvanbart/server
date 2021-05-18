@@ -7,13 +7,14 @@ const User = require("../models/user-model");
 
 // POST => Create new project
 router.post("/pet", (req, res, next) => {
-  const { name, imageUrl, bio, notes } = req.body;
+  const { name, imageUrl, bio, notes, pettype } = req.body;
 
   Pet.create({
     name,
     imageUrl,
     bio,
     notes,
+    pettype,
     owner: req.user._id,
   })
     .then((createdPet) => {

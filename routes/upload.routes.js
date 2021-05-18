@@ -9,6 +9,10 @@ router.post("/upload", fileUploader.single("imageUrl"), (req, res, next) => {
   res.status(200).json({ cloudinaryUrl: req.file.path });
 });
 
+router.post("/upload/profile", fileUploader.single("profileImg"), (req, res, next) => {
+  res.status(200).json({ cloudinaryUrl: req.file.path });
+});
+
 
 router.put("/profile/:id/upload", fileUploader.single("profileImg"), (req, res, next) => {
   const { id } = req.params;

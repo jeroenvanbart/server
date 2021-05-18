@@ -13,11 +13,6 @@ const userSchema = new Schema(
     },
     reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
     pets: [{type:Schema.Types.ObjectId, ref: "Pet"}],
-    usertype: {
-      type: String,
-      enum: ["Pet Owner", "Pet Sitter"],
-      default: "Pet Owner",
-    },
   },
   {
     timestamps: true,

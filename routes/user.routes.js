@@ -27,6 +27,18 @@ router.get("/profile/:id", (req, res, next) => {
   });
 })  
 
+router.get("/users", (req, res, next) => {
+  User.find()
+  .then((allUsers) => {
+    res.status(200).json(allUsers);
+  })
+  .catch((error) => {
+    res.json(error);
+    next(err);
+  });
+})  
+
+
 
 
 
