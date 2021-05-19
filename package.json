@@ -1,10 +1,10 @@
 {
-  "name": "project-management-server",
+  "name": "pawtel",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "DEBUG=project-management-server:* nodemon ./bin/www",
+    "dev": "DEBUG=pawtel:* nodemon ./bin/www",
     "dev-windows": "nodemon ./bin/www"
   },
   "devDependencies": {
@@ -13,6 +13,7 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cloudinary": "^1.25.1",
+    "connect-mongo": "^4.4.1",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
@@ -23,6 +24,7 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "multer-storage-cloudinary": "^4.0.0",
+    "nodemailer": "^6.6.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "serve-favicon": "^2.5.0"

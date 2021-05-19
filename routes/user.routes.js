@@ -2,18 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const { findById } = require("../models/user-model");
 const router = express.Router();
+const nodemailer = require('nodemailer')
 
 const User = require("../models/user-model");
-
-// router.get("/profile", (req, res, next) => {
-//   User.find().then((data) => {
-//     res.status(200).json(data);
-//     return;
-//   }).catch((err) => {
-//     res.status(500).json(err);
-//     next(err);
-//   });
-// });
 
 router.get("/profile/:id", (req, res, next) => {
   const { id } = req.params;
@@ -38,7 +29,26 @@ router.get("/users", (req, res, next) => {
   });
 })  
 
-
+router.post('/send-email', (req, res, next) => {
+  let {user} = req;
+  let { email, subject, message } = req.body;
+  let transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_PSWRD
+    }
+  });
+  transporter.sendMail({
+    from: '"Pawtel" <paw@hotel.com>',
+    to: email, 
+    replyTo: user.email,
+    subject: subject, 
+    text: message,
+  })
+  .then(info => res.status(200).render('contact/message', {email, subject, message, info}))
+  .catch(error => console.log(error));
+});
 
 
 

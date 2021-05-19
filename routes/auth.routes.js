@@ -41,8 +41,6 @@ authRoutes.post("/signup", (req, res, next) => {
       })
       .then((userFromDB) => {
         console.log("Newly created user is: ", userFromDB);
-        // Send the user's information to the frontend
-        // We can use also: res.status(200).json(req.user);
   
         const { _id, username, createdAt, updatedAt } = userFromDB;
   

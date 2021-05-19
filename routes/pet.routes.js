@@ -50,7 +50,20 @@ router.get("/:id/ownpets", (req, res, next) => {
       });
   });
   
-
+  router.delete("/pet/:id", (req, res, next) => {
+    const { id } = req.params;
+  
+    Pet.findByIdAndRemove(id)
+      .then(() => {
+        res.json({
+          message: `Pet ${id} is removed successfully.`,
+        });
+      })
+      .catch((error) => {
+        res.json({ error, errorMessage: `Something went wrong` });
+      });
+  });
+  
 // GET route => to get a specific project/detailed view
 // router.get("/pet/:id", (req, res, next) => {
 //   const { id } = req.params;
