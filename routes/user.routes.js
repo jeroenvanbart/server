@@ -30,8 +30,8 @@ router.get("/users", (req, res, next) => {
 })  
 
 router.post('/send-email', (req, res, next) => {
-  let {user} = req;
-  let { email, subject, message } = req.body;
+  // let {user} = req;
+  let { email, subject, message, useremail } = req.body;
   let transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
@@ -42,11 +42,11 @@ router.post('/send-email', (req, res, next) => {
   transporter.sendMail({
     from: '"Pawtel" <paw@hotel.com>',
     to: email, 
-    replyTo: user.email,
+    replyTo: useremail,
     subject: subject, 
     text: message,
   })
-  .then(info => res.status(200).render('contact/message', {email, subject, message, info}))
+  .then(info => res.status(200).json('Message was send'))
   .catch(error => console.log(error));
 });
 
