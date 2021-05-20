@@ -73,35 +73,30 @@ authRoutes.post("/login", (req, res, next) => {
         .json({ message: "Something went wrong authenticating user" });
       return;
     }
-
     if (!theUser) {
-      // "failureDetails" contains the error messages
-      // from our logic in "LocalStrategy" { message: '...' }.
       res.status(401).json(failureDetails);
       return;
     }
-
     // save user in session
     req.login(theUser, (err) => {
+      console.log("the user is" , theUser)
+      
       if (err) {
         res.status(500).json({ message: "Session save went bad." });
         return;
       }
-
-      // We are now logged in (that's why we can also send req.user)
       res.status(200).json(theUser);
     });
   })(req, res, next);
 });
 
 authRoutes.post("/logout", (req, res, next) => {
-  // req.logout() is defined by passport
   req.logout();
   res.status(200).json({ message: "Log out success!" });
 });
 
 authRoutes.get("/loggedin", (req, res, next) => {
-  // req.isAuthenticated() is defined by passport
+
   if (req.isAuthenticated()) {
     res.status(200).json(req.user);
     return;

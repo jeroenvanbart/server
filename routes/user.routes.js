@@ -1,6 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const { findById } = require("../models/user-model");
 const router = express.Router();
 const nodemailer = require('nodemailer')
 
@@ -50,6 +49,16 @@ router.post('/send-email', (req, res, next) => {
   .catch(error => console.log(error));
 });
 
-
+router.put("/profile/:id/update", (req, res, next) => {
+  const { id } = req.params;
+  User.findByIdAndUpdate(id, { profileImg: cloudinaryUrl })
+  .then((user) => {
+    res.status(200).json(user);
+  })
+  .catch((error) => {
+    res.json(error);
+    next(err);
+  });
+})  
 
 module.exports = router;
