@@ -9,8 +9,5 @@ module.exports = (incommingApp) => {
             origin: [FRONTEND_ENDPOINT],
         })
     );
-    incomingApp.options('*', cors({
-        origin: FRONTEND_ENDPOINT,
-        credentials: true,
-      }))
+    
 };
