@@ -7,7 +7,7 @@ const User = require("../models/user-model");
 
 // POST => Create new project
 router.post("/pet", (req, res, next) => {
-  const { name, imageUrl, bio, notes, pettype } = req.body;
+  const { name, imageUrl, bio, notes, pettype, id } = req.body;
 
   Pet.create({
     name,
@@ -15,7 +15,7 @@ router.post("/pet", (req, res, next) => {
     bio,
     notes,
     pettype,
-    owner: req.user._id,
+    owner: id,
   })
     .then((createdPet) => {
       res.status(200).json(createdPet);

@@ -55,7 +55,7 @@ authRoutes.post("/signup", (req, res, next) => {
       .catch((error) => {
         if (error.code === 11000) {
           res.status(500).json({
-            errorMessage:
+            message:
               "Username needs to be unique. Username has already been used.",
           });
         } else {
