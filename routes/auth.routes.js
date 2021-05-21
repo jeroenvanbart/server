@@ -78,9 +78,7 @@ authRoutes.post("/login", (req, res, next) => {
       return;
     }
     // save user in session
-    req.login(theUser, (err) => {
-      console.log("the user is" , theUser)
-      
+    req.login(theUser, (err) => {    
       if (err) {
         res.status(500).json({ message: "Session save went bad." });
         return;
