@@ -12,6 +12,7 @@ router.get("/profile/:id", (req, res, next) => {
     res.status(200).json(user);
   })
   .catch((error) => {
+    console.error("error", error)
     res.json(error);
     next(err);
   });
@@ -29,7 +30,6 @@ router.get("/users", (req, res, next) => {
 })  
 
 router.post('/send-email', (req, res, next) => {
-  // let {user} = req;
   let { email, subject, message, useremail } = req.body;
   let transporter = nodemailer.createTransport({
     service: 'Gmail',
