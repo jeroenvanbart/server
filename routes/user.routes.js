@@ -18,6 +18,8 @@ router.get("/profile/:id", (req, res, next) => {
   });
 })  
 
+
+
 router.get("/users", (req, res, next) => {
   User.find()
   .then((allUsers) => {
