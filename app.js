@@ -26,10 +26,10 @@ app.locals.title = "Express - Generated with IronGenerator";
 require("./configs/cors.config")(app);
 
 app.use("/", require("./routes/index"));
-app.use("/", require("./routes/auth.routes"));
-app.use("/", require("./routes/upload.routes"));
-app.use("/", require("./routes/user.routes"));
-app.use("/", require("./routes/pet.routes"));
-app.use("/", require("./routes/date.routes"));
+app.use("/api", require("./routes/auth.routes"));
+app.use("/api", require("./routes/upload.routes"));
+app.use("/api", require("./routes/user.routes"));
+app.use("/api", require("./routes/pet.routes"));
+app.use("/api", require("./routes/date.routes"));
 
 module.exports = app;
